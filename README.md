@@ -1,7 +1,7 @@
 # SnippetGarden API
 
 
-REST API application that provide CRUD endpoints to snippet storage
+REST API application that provide CRUD endpoints to helpful snippets for laravel development
 
 ## Install with Composer
 
