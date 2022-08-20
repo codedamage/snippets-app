@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Snippets;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class SnippetRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class SnippetRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return Auth::check();
     }
 
     /**
