@@ -9,9 +9,12 @@ use Illuminate\Http\Response;
 use App\Http\Resources\SnippetResource;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use App\Models\Snippet;
+use Laravel\Scout\Searchable;
 
 class SnippetController extends Controller
 {
+    use Searchable;
+
     /**
      * Display a listing of the resource.
      *

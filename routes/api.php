@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\Snippets\SnippetController;
 use App\Http\Controllers\AuthController;
+use App\Models\Snippet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 /*
@@ -20,7 +21,11 @@ use Illuminate\Support\Facades\Route;
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::apiResource('snippets', SnippetController::class,['except' => ['store', 'update', 'destroy']]);
-
+Route::get('/search', function (Request $request) {
+    $query = $request->query('query');
+    $snippets = Snippet::search($query)->take(10)->get();
+    return $snippets;
+});
 // Protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::apiResource('snippets', SnippetController::class, ['only' => ['store', 'update', 'destroy']]);
